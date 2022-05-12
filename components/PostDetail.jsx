@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Image from 'next/image';
 import React from 'react';
 
 const PostDetail = ({post}) => {
@@ -49,7 +50,8 @@ const PostDetail = ({post}) => {
       <div className="px-4 lg:px-0">
         <div className="flex items-center mb-8 w-full">
           <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8">
-            <img
+            <Image
+              unoptimized
               alt={post.author.name}
               height="30px"
               width="30px"
@@ -67,7 +69,7 @@ const PostDetail = ({post}) => {
         </div>
         <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
         {post.content.raw.children.map((typeObj, index) => {
-          console.log(typeObj);
+          //console.log(typeObj);
           const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
 
           return getContentFragment(index, children, typeObj, typeObj.type);
